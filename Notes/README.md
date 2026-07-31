@@ -1,1 +1,31 @@
 # My cybersecurity notes through the journey 
+Access Control= Rules that decide who can do what.
+mainly there are 3 types: Vertical, Horizontal and context-based
+1. vertical Access Control 
+Controls access based on role or privilege level. Higer role =more permissions.
+• Broken vertical Access Control→ When customer visits a (website.com/admin) and suddenly sees the admin dashboard.  Huge Vulnerability.
+
+2. Horizontal Access Control
+  People with the same role should not see each other's data. id change one where if u change id.
+
+3. Context-Dependent Access Control
+This depend on time, state or situation. eg. Airline: Seat booking and every one booked same seat without understand the context which is a vul. In Bank pass reset link valid 10 min and after that it should expire.
+☐ Broken Access Control: System fail to enforce access restrictions correctly.
+      ‘’SO 1st lab unprotected admin 
+      SImply i did ctrl + u and inspect page there was a js script and there was /admin-6c8nme which was needed and i paste it in url and i deleted carlos''
+     
+4. Parameter-based access control methods
+    Some applications determine the user's access rights or role at  login, and then store this information in a user-controllable location.  This could be: A hidden field, a cookie or a present query string parameter.
+“This lab was fucking hell i did login and then capture it in proxy history and send it to repeater and did admin to ture  and then send it after that inspect to change admin form false to ture”
+“SO i solved this lab ”user role can be modified in user profile" one it was easy but the previous day i tried to solve but i couldnot for an hour i simply loged  in using the given ids and then update the email and then capture it in http history then i send it to repeater initially i sent it and i got the response roleid:1. Now i added “roleid”:2 and send it and boom it worked but here before adding script down i forget to put comma(,) and that was the error.
+
+5. BROKEN ACCESS CONTROL RESULTING FROM PLATFROM MISCONFIGURATION
+ → they do this by restriciting access to some urls and HTTP method based on the user's role.
+ an example:DENY: POST, /admin/deleteUser, managers  here access to post is denied by /admin/de... for user in manager group.
+ → URL types: X-Original -URL and X-rewrite-URL .  Even if the fornt end standard (rigorous) is maintained but allows URL overridden via a req header then it might be possible to bypass request using like this:  POST / HTTP/1.1X-Original-URL: /admin/deleteUser.. 
+☑  SO i couldn't solve X-Original-URL one  so i had to look the soln and i didn't know how to add those querry even that i did no success as i added X-Original-URL:/invalid one in 1 st line in GET request so it didn't work and after i watched the community soln i got to know it to be added after /net line and there should not be a parameter which i did the mistake of adding /admin/delete?username=carlos but after ? it has to be added in 1st line i did't know and before doing this stuff first after testing /admin in x original we should right click in the req/hex page and open this in a browser copy and open that page in the browser to see the 2 user and delete carlos initially access denied ofc and after that use the query i mentioned earlier using the right parameter in right place.
+
+☑ Unprotected functionality
+Simply server fails to verify who is allowed to view or use sensitive or privileged parts of a website. → Can be exploited if path left in publicly accessible files like robots.txt. Or Directory brute forcing like /admin, /administrator to discover hidden path  or UI Exposure.
+TO STOP / FIX IT :- Enforce Authentication, Implement Role-Based Authorization, Stop Relying on Obscurity, Sanitize code.
+• SO i solved this level by simply changing the url to robots.txt and in proxy tab in burp after that i send it to repeater → i changed that to administrator-panel and then i tried to delete like i did previosly /admin.../delete/?user.. one it didn't work  so i simply wnet back to administrator-panel and send it and copy that and i opened it in browser bingo and then i deleted carlos.
