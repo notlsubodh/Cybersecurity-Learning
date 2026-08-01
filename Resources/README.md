@@ -1,1 +1,1 @@
-# All the resources the is and will be used throught the journey
+# All the resources that is and will be used throught the journey
