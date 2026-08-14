@@ -1,5 +1,43 @@
 # My cybersecurity notes through the journey 
-Access Control= Rules that decide who can do what.
+IPc means Inter-Process Communication. It refers to the set of programming interfaces and protocols that allow separate processes to exchange data and synchronize their actions, whether they are running on a single computer or distributed across a network.
+  SMTP→ SIMPLE MAIL TARNSFER PROTOCOL  responsible for sending... typically operates in ports 25,465(ssl), or 587(tls), IMAP→ INTERNET MESSAGE ACCESS PROTOCOL responsible for receiving... operates in  ports 143(unencrypted) or 993(SSL/TLS)  TOGETHER SMTP deliver the message, while IMAP allow the user to view and organize it
+1.   VOIP→  Voice over Internet protocol
+2. payload is the actual useful data you want to send where as OVERHEAD is the extra information added by the network protocols to ensures the payload gets delivered correctly (eg. address,sequence,no,error checks)
+3. Simply every time the data is sent overhead is added to the payload to  create the total packet size.
+•  when we knock on the door with a request te server respond with a status code. Status code no 200 means Ok/ Green light where as 403 menas forbidden→ i see you, I know the room exists, but you are not allowed to enter. AND 404 means NOt found/ Red light.
+• socket.socket() cz 1st is the library we mentioned and sec is the tool in the box. 
+• AF_INET & SOCK_STREAM 
+• socket.AF_INET: this tell py “i want to use IPV4 address”
+# ip a is the mofern alternative of ifconfig 
+metaexploit a bit safe only in safe environment 
+bandit1 ko pass ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If bandit2 ko=263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+bandit3=MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx , b4=2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+you aafai gare, b5 =4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw, b6=HWasnPhtq9AVKe0dmk45nxy20cvUa6EG b7=morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj b8=dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc b9=4CKMh1JI91bUIZZPXDqGanal4xvAg0JM,b10=FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey, b11=dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr, b12=7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+
+
+
+tools haru use maja le garne 
+cat - file read, 
+chmod - Make file executable eg.chmod +x script.sh -yes lai aajai buj nu parxa
+subnet - divides network
+bandit ma task ho suru ma file read only it give us password(using cat) and slowly it becomes chalangingly like and then multiple files or some file name - or -- using cat "(filename)" search get password and advance and slowly if there is more file it hard to read so we using ./ and slowly /* for all and see if it directory or show so that it will be easier to extract the data and now in level 5 all are directory so gotta dig more deep and use a bit advance stuff Level	      here a picture
+Main lesson
+0→1	ls, cat
+1→2	weird filenames (-)
+2→3	spaces in filenames (" ")
+3→4	hidden files (ls -a)
+4→5	identify file type (file)
+5→6	search by properties (size, permissions, 
+Find files inside inhere with size 1033 bytes that aren't executable = find inhere -type f -size 1033c ! -executable
+7= for 7-8 just used grep millionth data.txt 
+8= 8-9: Group same lines together → sort,Find unique line -→ uniq->sort data.txt | uniq -u here | is pipe means output of the first command -->input of the second command for example:
+cat file.txt | grep password :means:- read file--> search password 
+sort: Arrange (in an order)& uniq: Remove duplicates --> unique -u ->show only unique thing/components form the file for eg. if there is a,a,a,,b,b,c this command gives c as output
+9= i used strings wich basically extract text from binary i was supposed to do grep == as password is after = but i simply copied strings data.txt | grep == it was correct way to do it 
+tr=Replace/translate characters ->tr a-z A-Z ->lowercase to uppercase, tr 'A-Za-z' 'N-ZA-Mn-za-m'-→ ROT13 decode/encode
+Used in:simple ciphers,text transformation,cleaning logs,encoding tricks
+
+##### Access Control= Rules that decide who can do what. ##
 mainly there are 3 types: Vertical, Horizontal and context-based
 1. vertical Access Control 
 Controls access based on role or privilege level. Higer role =more permissions.
@@ -10,7 +48,7 @@ Controls access based on role or privilege level. Higer role =more permissions.
 
 3. Context-Dependent Access Control
 This depend on time, state or situation. eg. Airline: Seat booking and every one booked same seat without understand the context which is a vul. In Bank pass reset link valid 10 min and after that it should expire.
-☐ Broken Access Control: System fail to enforce access restrictions correctly.
+# ☐ Broken Access Control: System fail to enforce access restrictions correctly.
       ‘’SO 1st lab unprotected admin 
       SImply i did ctrl + u and inspect page there was a js script and there was /admin-6c8nme which was needed and i paste it in url and i deleted carlos''
      
@@ -23,9 +61,36 @@ This depend on time, state or situation. eg. Airline: Seat booking and every one
  → they do this by restriciting access to some urls and HTTP method based on the user's role.
  an example:DENY: POST, /admin/deleteUser, managers  here access to post is denied by /admin/de... for user in manager group.
  → URL types: X-Original -URL and X-rewrite-URL .  Even if the fornt end standard (rigorous) is maintained but allows URL overridden via a req header then it might be possible to bypass request using like this:  POST / HTTP/1.1X-Original-URL: /admin/deleteUser.. 
-☑  SO i couldn't solve X-Original-URL one  so i had to look the soln and i didn't know how to add those querry even that i did no success as i added X-Original-URL:/invalid one in 1 st line in GET request so it didn't work and after i watched the community soln i got to know it to be added after /net line and there should not be a parameter which i did the mistake of adding /admin/delete?username=carlos but after ? it has to be added in 1st line i did't know and before doing this stuff first after testing /admin in x original we should right click in the req/hex page and open this in a browser copy and open that page in the browser to see the 2 user and delete carlos initially access denied ofc and after that use the query i mentioned earlier using the right parameter in right place.
+# ☑  SO i couldn't solve X-Original-URL one  so i had to look the soln and i didn't know how to add those querry even that i did no success as i added X-Original-URL:/invalid one in 1 st line in GET request so it didn't work and after i watched the community soln i got to know it to be added after /net line and there should not be a parameter which i did the mistake of adding /admin/delete?username=carlos but after ? it has to be added in 1st line i did't know and before doing this stuff first after testing /admin in x original we should right click in the req/hex page and open this in a browser copy and open that page in the browser to see the 2 user and delete carlos initially access denied ofc and after that use the query i mentioned earlier using the right parameter in right place.
 
-☑ Unprotected functionality
+# ☑ Unprotected functionality
 Simply server fails to verify who is allowed to view or use sensitive or privileged parts of a website. → Can be exploited if path left in publicly accessible files like robots.txt. Or Directory brute forcing like /admin, /administrator to discover hidden path  or UI Exposure.
 TO STOP / FIX IT :- Enforce Authentication, Implement Role-Based Authorization, Stop Relying on Obscurity, Sanitize code.
-• SO i solved this level by simply changing the url to robots.txt and in proxy tab in burp after that i send it to repeater → i changed that to administrator-panel and then i tried to delete like i did previosly /admin.../delete/?user.. one it didn't work  so i simply wnet back to administrator-panel and send it and copy that and i opened it in browser bingo and then i deleted carlos.
+# • SO i solved this level by simply changing the url to robots.txt and in proxy tab in burp after that i send it to repeater → i changed that to administrator-panel and then i tried to delete like i did previosly /admin.../delete/?user.. one it didn't work  so i simply wnet back to administrator-panel and send it and copy that and i opened it in browser bingo and then i deleted carlos.
+# • METHOD-BASED ACCESS CONTROL CAN BE Circumvented
+Technically i completed this lab within a minute using intercept on and changing the request parameter and giving my self a admin privilage but this level require a clear exploit as it follows steps i.e. S1→ log in using admin and upgrade carlos to admin step 2→ see that request in proxy and send it to repeater step 3 log out and login using the given user id step 4 see the login req in proxy and then copy the session cookie step 5→ go to repeater and change the session cookie it's a post req so u will see and error so change the request clicking right and change after that change id username form carlos to given username(wiener) . Level completed.
+# USER ID controlled by request parameter
+Here just login with given id and then in proxy see and send to repeater and then change the name form wiener to carlos that's it.
+GUID ( Globally Unique identifier) is a long 36 character text code like (123e4567-e89b-12d3-a456-426614174000)  used by computers to uniquely name digital items. Fun fact: Two separate computer can make a GUID at the exact same time without ever matching. V1 old GUID which uses computer network.
+#USER ID CONTROLLED BY REQUEST PARAMETER, WITH PREDICTABLE USER IDS
+So basically browse the lab and see carlos also see the request in brup there u will see his user id copy it and try to log in using the given credentials. Send the loged in credentials to Repeater and place the user id with carlos after that Request in browser original session and paste that url and bingo u got the API key.
+# USER ID CONTROLLED BY REQUEST PARAMETER WITH DATA LEAKAGE IN REDIRECT
+In this lab login in with the given credentials and see that req in burp after that send that req containing id to repeater now change the id name to carlos then send now get the API key in response.
+# ☐ HORIZONTAL TO VERTICAL PRIVILEGE ESCALATION
+Simply by compromising a more privilege user. An attacker might be able to gain access to another user's account page using the parameter tampering technique already described for horizontal privilege escalation.
+# USER ID CONTROLLED  BY REQUEST PARAMETER WITH PASSWORD DISCLOSURE
+So login using the given credential after that change the id to administrator then see the response thier is the password now login to administrator and delete. If u just request in the browser, copy and then open u won't see admin panel.
+# * IDOR( Insecure direct  object reference):- Sub category of access control vulnerabilities. IDORs occur if an application uses user-supplied input to access objects directly and an attacker can modify the input to obtain unauthorized access.
+# IDOR
+To solve this lab select live chat, send a message and then select view transcript. Review that url in burp as it contain test file with incrementing number now change the file name to 1.txt and review the text. 
+• More about idor:Consider the following url to access the customer account page: https://insecure-website.com/customer_account?customer_number=132355 Here customer nuber is directly used as a record index in quries that are performned on the back-end database. If no other control are in place, an attacker can simply modify customer_number value, bypasssing access control to view the records of other customers. IDOr vul leading to horizontal privilege escalation.An attacker might be able to perform horizontal and vertical privilege escalation by altering the user to one with additional privileges while bypassing access controls. Other possibilities include exploiting password leakage or modifying parameters once the attacker has landed in the user's accounts page, for example.  IDOR vulnerability with direct reference to static files→ Arise when sensitive resources are located in static files on the server-side filesystem.  For example, a website might save chat message transcripts to disk  using an incrementing filename, and allow users to retrieve these by  visiting a URL like the following:      https://insecure-website.com/static/12144.txt 
+→ In this situation, an attacker can simply modify the filename to retrieve a transcript created by another user and potentially obtain user credentials and other sensitive data. 
+# ☐ Access control vulnerabilities in multi-step processes
+Many website implement important functions over a series of steps.
+• A variety of inputs or options need to be captured.
+• The user needs to review and confirm details before the action is performed.  
+For example: administrative function to update user details might involve these steps:
+1. Load the form that contains details for a specific user.
+2. Submit the changes.
+3. Review the changes and confirm.
+Sometimes, a website will implement rigorous access controls over some of these steps, but ignore others. Imagine a website where access controls are correctly applied to the first and second steps, but not to the third step. The website assumes that a user will only reach step 3 if they have already completed the first steps, which are properly controlled. An attacker can gain unauthorized access to the function by skipping the first two steps and directly submitting the request for the third step with the required parameters.
