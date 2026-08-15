@@ -94,3 +94,21 @@ For example: administrative function to update user details might involve these 
 2. Submit the changes.
 3. Review the changes and confirm.
 Sometimes, a website will implement rigorous access controls over some of these steps, but ignore others. Imagine a website where access controls are correctly applied to the first and second steps, but not to the third step. The website assumes that a user will only reach step 3 if they have already completed the first steps, which are properly controlled. An attacker can gain unauthorized access to the function by skipping the first two steps and directly submitting the request for the third step with the required parameters.
+# # Multi-step process with no access control on one step:
+So in this lab login in using the given admin credential after that promote the user carlos to admin then see the 2 request in burp and send it to repeater. Now logout and login in using normal given credential i.e wiener one. Inspect and get the cookie of wiener. After that change the cookies in both request and send one will show error and another will not show error the one that doesn't show error change that name from carlos to wiener. Here the one that donot show error is the one that is sending the conformation request as we tried to make carlos admin so that conformation request is the one.
+# • Referer-based access control
+Some websites base access controls on the Referer header submitted in the HTTP request. The Referer header can be added to requests by browsers to indicate which page initiated a request. For example, an application robustly enforces access control over the main administrative page at /admin, but for sub-pages such as /admin/deleteuser only inspects the Refer header. If the Refer header contains the main /admin URL, then the request us allowed.
+In this case, the Referer header can be flly controlled by an attacker. this means that they can forge direct requests to sensitive sub-pages by supplying the required Referer header, and gain unauthorized access. 
+## REFERER-BASED ACCESS CONTROL
+This lab is also same just login using admin credentials, promote carlos to admin after that see and send that request to repeater now login using normal credential i.e wiener one and get the cookie of wiener and again in admin conformation request change the cookie and name.
+# ☐ Location-based access control
+   Some websites enforce access controls based on the user's  geographical location. This can apply, for example, to banking  applications or media services where state legislation or business  restrictions apply. These access controls can often be circumvented by  the use of web proxies, VPNs, or manipulation of client-side geolocation  mechanisms.  
+  
+# ☐ How to prevent access control vulnerabilities
+Access control vulnerabilities can be prevented by taking a defense-in-depth approach and applying the following principles:  
+1. Never rely on obfuscation alone for access control.  
+2. Unless a resource is intended to be publicly accessible, deny access by default.
+3. Wherever possible, use a single application-wide mechanism for enforcing access controls.
+4. At the code level, make it mandatory for developers to declare the access that is allowed for each resource, and deny access by default.  
+5. Thoroughly audit and test access controls to ensure they work as designed.
+
