@@ -111,4 +111,90 @@ Access control vulnerabilities can be prevented by taking a defense-in-depth app
 3. Wherever possible, use a single application-wide mechanism for enforcing access controls.
 4. At the code level, make it mandatory for developers to declare the access that is allowed for each resource, and deny access by default.  
 5. Thoroughly audit and test access controls to ensure they work as designed.
+# password security
+Q1. Why is SHA-256(password) not enough for password storage?
+Answer:
+SHA-256 is fast. Attackers with stolen hashes can test billions of password guesses quickly. Password hashes should deliberately be slow and salted, using Argon2id, bcrypt, scrypt, or PBKDF2.
+Q2. What is a salt?
+Answer:
+A salt is a unique random value added before hashing each password.
 
+Conceptually:
+hash(password + unique_random_salt)
+It prevents two users with the same password from having the same stored hash and reduces the usefulness of precomputed cracking tables.
+# MFA Requires more than one factor
+Something you know	Password, PIN
+Something you have	Authenticator app, security key
+Something you are	Fingerprint, face scan
+# Stronger MFA methods
+SMS code	Better than password alone, but vulnerable to SIM swapping
+Email code	Useful but depends on email account security
+Authenticator app (TOTP)	Stronger (Time Based One time-password)
+Push notification	Good if number matching is used
+FIDO2/WebAuthn security key	Excellent; phishing-resistant (Fast IDentity Online 2)
+# Common MFA flaws
+MFA is optional for privileged users
+MFA can be bypassed through a secondary login endpoint
+Password reset disables MFA without sufficient verification
+Remember-device tokens never expire
+Backup codes are predictable or reusable
+MFA challenge is not tied to the login attempt
+OAuth/social login does not enforce the organization’s MFA policy
+# Session
+Set-Cookie: session=RANDOM_VALUE;//Secure;Secure: cookie only travels over HTTPS.
+HttpOnly;//HttpOnly: JavaScript cannot read it, reducing cookie theft from XSS.
+SameSite=Lax;// SameSite: reduces cross-site request attacks.
+Path=/; //Path: restricts where the cookie is sent.
+# common session flaws
+1. Session fixation
+The application does not issue a new session after login.
+
+Bad flow:
+
+Browser has session S1
+User logs in
+Server keeps session S1
+Better flow:
+
+User logs in
+Server destroys old session
+Server creates new random authenticated session S2
+# 2. Long-lived sessions
+A session stays valid for months even after logout or password change.
+
+# 3. Missing session invalidation
+Sessions should be invalidated after:
+Logout
+Password change
+MFA reset
+Suspicious activity
+Account recovery
+Admin revocation
+4. Tokens in URLs: https://example.com/account?token=eyJ...
+URLs can be logged in browser history, proxy logs, analytics tools, and referrer headers.
+## Question: Why should a session ID be regenerated after login?
+Answer:
+To prevent session fixation. Before login, a session may be anonymous or potentially known by another party. After login, the server should create a fresh authenticated session ID.
+# JWT
+JWTs are commonly used for APIs. example:header.payload.signature
+e.g payload {
+  "sub": "user_123",
+  "role": "customer",
+  "exp": 1735689600}
+# Important: a JWT is often encoded, not encrypted. Anyone holding it may read its payload. Never place secrets, passwords, or sensitive personal data inside it
+# JWT security rules
+Verify the signature.
+Enforce allowed signing algorithms.
+Validate expiration (exp).
+Validate issuer (iss) and audience (aud) where applicable.
+Keep token lifetime short.
+Use refresh tokens carefully.
+Do not trust claims such as "role": "admin" unless the signature is validated.
+Avoid logging full tokens.
+# Common JWT mistakes
+Mistake	Risk
+No signature validation	Attackers can alter claims
+Accepting unexpected algorithm	Forged or improperly validated tokens
+No expiration	Stolen token works indefinitely
+Token stored in insecure browser storage	Greater theft risk during XSS
+Sensitive data in payload	Data disclosure
