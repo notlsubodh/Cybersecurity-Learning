@@ -74,3 +74,12 @@ Access control vulnerabilities can be prevented by taking a defense-in-depth app
 3. Wherever possible, use a single application-wide mechanism for enforcing access controls.
 4. At the code level, make it mandatory for developers to declare the access that is allowed for each resource, and deny access by default.  
 5. Thoroughly audit and test access controls to ensure they work as designed.
+### Access control in juice shop
+• You successfully solved a challenge: View Basket (View another user's shopping basket.) 
+• For idor it is about Does changing the object reference let me access something that belongs to somebody else? not Can I change 123 to 124?
+• You successfully solved a challenge: Forged Review (Post a product review as another user or edit any user's existing review.) 
+• You successfully solved a challenge: View Basket (View another user's shopping basket.) 
+• You successfully solved a challenge: Login Admin (Log in with the administrator's user account.)  Sql injection in email field i.e  ' or 1=1--  . You successfully solved a challenge: Admin Section (Access the administration section of the store. And from admin page delete 5 star review → You successfully solved a challenge: Five-Star Feedback (Get rid of all 5-star customer feedback.)
+• You successfully solved a challenge: Forged Feedback (Post some feedback in another user's name.). You need to summit the feedback and then see the post/rest/feedback change the name in the json body.
+• You successfully solved a challenge: Manipulate Basket (Put an additional product into another user's shopping basket.) Add to basket and then see the post request and send that request with json body to repeater and add another “BasketId”:"1/any" Here 7 is your basket (passes the ownership check) and “1” is target's basket (where the item actually gets added) 
+
