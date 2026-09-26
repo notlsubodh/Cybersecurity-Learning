@@ -54,4 +54,4 @@ While attempting to brute-force a login page, you should pay particular attentio
 This lab is vulnerable to username enumeration and password brute-force attacks. It has an account with a predictable username and password, which can be found in the following wordlists:
 • Candidate usernames
 • Candidate passwords
-Rn i changed the attack to cluster bomb attack so i send a login req
+Rn i changed the attack to cluster bomb attack so i send a login req. So basically we need to brute force our way in for that we use burp intruder and we have to add payload. We can use cluster bomb attack where we can check both username and password which we send in intruder as a /login request. We need to paste the username file and password file for both if using cluster bomb also use a gerp extract for that add words like congratulations, welcome or you successfully logged in after that start the attack and see the tick mark in that column.
