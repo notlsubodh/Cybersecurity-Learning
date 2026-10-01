@@ -55,3 +55,11 @@ This lab is vulnerable to username enumeration and password brute-force attacks.
 • Candidate usernames
 • Candidate passwords
 Rn i changed the attack to cluster bomb attack so i send a login req. So basically we need to brute force our way in for that we use burp intruder and we have to add payload. We can use cluster bomb attack where we can check both username and password which we send in intruder as a /login request. We need to paste the username file and password file for both if using cluster bomb also use a gerp extract for that add words like congratulations, welcome or you successfully logged in after that start the attack and see the tick mark in that column.
+For this lab simply use SNIPER ATTACK, i used it and initally bruteforeced for username in payload give the all usernames, start the attack there you can see different response status in render you can see incorrect password unline others(incorrect username), now add$$ in password paste it in payload and do the same and login.
+
+2. Lab: Username enumeration via subtly different responses.
+This lab is subtly vulnerable to username enumeration and password brute-force attacks. It has an account with a predictable username and password, which can be found in the following wordlists:  
+• Candidate usernames 
+•  candidate passwords
+So basically similar to previous lab but here just in setting in grep extract add the error message that is displayed i.e invalid username or password. so in the correct name there won't be . at the end and you got the name and for password you will have a different status code for here 302.
+
