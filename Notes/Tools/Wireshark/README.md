@@ -84,3 +84,100 @@ Whether or not the above tools will be more helpful than Wireshark is a differen
 [Note]	Third party protocol analyzers may require specific file extensions
 Wireshark examines a file’s contents to determine its type. Some other protocol analyzers only look at a file’s extension. For example, you might need to use the .cap extension in order to open a file using the Windows version of Sniffer.
 
+# Main window navigation
+Packet list and detail navigation can be done entirely from the keyboard. Table 3.1, “Keyboard Navigation” shows a list of keystrokes that will let you quickly move around a capture file.
+Table 3.1. Keyboard Navigation
+
+Accelerator	Description
+Tab or Shift+Tab --> Move between screen elements, e.g., from the toolbars to the packet list to the packet detail.
+
+↓ --> Move to the next packet or detail item. Holding the key down will move more quickly.
+
+↑ --> Move to the previous packet or detail item. Holding the key down will move more quickly.
+
+Ctrl+↓ or F8 --> Move to the next packet, even if the packet list isn’t focused.
+
+Ctrl+↑ or F7 --> Move to the previous packet, even if the packet list isn’t focused.
+
+Ctrl+. --> Move to the next packet of the conversation (TCP, UDP or IP).
+
+Ctrl+, --> Move to the previous packet of the conversation (TCP, UDP or IP).
+
+Alt+→ or Option+→ (macOS) -->Move to the next packet in the selection history.
+
+Alt+← or Option+← (macOS) -->Move to the previous packet in the selection history.
+
+← --> In the packet detail, closes the selected tree item. If it’s already closed, jumps to the parent node.
+
+→ --> In the packet detail, opens the selected tree item.
+
+Shift+→ --> In the packet detail, opens the selected tree item and all of its subtrees.
+
+Ctrl+→ --> In the packet detail, opens all tree items.
+
+Ctrl+← --> In the packet detail, closes all tree items.
+
+Backspace --> In the packet detail, jumps to the parent node. 
+
+Return or Enter --> In the packet detail, toggles the selected tree item.
+
+
+View → Internals → Keyboard Shortcuts will show a list of all shortcuts in the main window. Additionally, typing anywhere in the main window will start filling in a display filter.
+
+# The menu
+Wireshark’s main menu is located either at the top of the main window (Windows, Linux) or at the top of your main screen (macOS).
+ "Note
+Some menu items will be disabled (greyed out) if the corresponding feature isn’t available. For example, you cannot save a capture file if you haven’t captured or loaded any packets."
+
+
+<img width="536" height="28" alt="image" src="https://github.com/user-attachments/assets/99d04be1-a82d-452e-917c-72fdf6c79dcd" />
+
+The main menu contains the following items:
+
+File
+This menu contains items to open and merge capture files, save, print, or export capture files in whole or in part, and to quit the Wireshark application. 
+<img width="1066" height="792" alt="image" src="https://github.com/user-attachments/assets/c536a2ba-235b-46fc-9b0c-a25bf8a8dbac" />
+
+Edit
+This menu contains items to find a packet, set a time reference, or mark one or more packets, handle configuration profiles, and set your preferences; (cut, copy, and paste are not presently implemented).
+<img width="1066" height="792" alt="image" src="https://github.com/user-attachments/assets/80728a16-9845-404a-b91d-a2f152215266" />
+
+View
+This menu controls the display of the captured data, including colorization of packets, zooming the font, showing a packet in a separate window, expanding and collapsing trees in packet details, …​. 
+<img width="1088" height="777" alt="image" src="https://github.com/user-attachments/assets/754dff53-e956-4c3f-80ba-00ae6de428aa" />
+
+Go
+This menu contains items to go to a specific packet. 
+<img width="1066" height="792" alt="image" src="https://github.com/user-attachments/assets/90ca064f-13d7-4515-914d-e6ddc29576d8" />
+
+Capture
+This menu allows you to start and stop captures and to edit capture filters. 
+<img width="1066" height="792" alt="image" src="https://github.com/user-attachments/assets/2bda796a-156e-4426-9473-8b57d7734f97" />
+
+Analyze
+This menu contains items to manipulate display filters, enable or disable the dissection of protocols, configure user specified decodes and follow a TCP stream. 
+<img width="911" height="684" alt="image" src="https://github.com/user-attachments/assets/74e2d4ef-99c0-4514-9038-fa4d1f1be802" />
+
+Statistics
+This menu contains items to display various statistic windows, including a summary of the packets that have been captured, display protocol hierarchy statistics and much more. 
+<img width="1066" height="792" alt="image" src="https://github.com/user-attachments/assets/9f482baa-4297-4074-9c39-5969812bd1b0" />
+
+Telephony
+This menu contains items to display various telephony related statistic windows, including a media analysis, flow diagrams, display protocol hierarchy statistics and much more. 
+<img width="796" height="694" alt="image" src="https://github.com/user-attachments/assets/5addfc99-e398-4873-bdb2-34eb6661e957" />
+
+Wireless
+This menu contains items to display Bluetooth and IEEE 802.11 wireless statistics.
+
+Tools
+This menu contains various tools available in Wireshark, such as creating Firewall ACL Rules. 
+<img width="992" height="729" alt="image" src="https://github.com/user-attachments/assets/00ac1137-9803-45f7-bbef-e48c8101f642" />
+
+Help
+This menu contains items to help the user, e.g., access to some basic help, manual pages of the various command line tools, online access to some of the webpages, and the usual about dialog. 
+<img width="1066" height="792" alt="image" src="https://github.com/user-attachments/assets/3cb60796-520b-4f9f-9bb5-867bdbbcb3ea" />
+
+
+
+[Tip]	Shortcuts make life easier
+Most common menu items have keyboard shortcuts. For example, you can press the Control and the K keys together to open the “Capture Options” dialog.
