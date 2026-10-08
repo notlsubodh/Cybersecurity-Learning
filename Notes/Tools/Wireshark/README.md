@@ -191,7 +191,6 @@ Items in the toolbar will be enabled or disabled (greyed out) similar to their c
 <img width="1026" height="48" alt="image" src="https://github.com/user-attachments/assets/df66af9b-bf8b-40e9-9c9f-affc90b38602" />
 
 # | Icon | Toolbar Item | Menu Item | Description |
-|---|------|-------------|-----------|-------------|
 | 1 | capture start | Start | Capture → Start | Starts capturing packets with the same options as the last capture or the default options if none were set. |
 | 2 | capture stop | Stop | Capture → Stop | Stops the currently running capture. |
 | 3 | capture restart | Restart | Capture → Restart | Restarts the current capture session. |
