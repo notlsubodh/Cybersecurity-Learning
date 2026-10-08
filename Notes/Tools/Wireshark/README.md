@@ -181,3 +181,38 @@ This menu contains items to help the user, e.g., access to some basic help, manu
 
 [Tip]	Shortcuts make life easier
 Most common menu items have keyboard shortcuts. For example, you can press the Control and the K keys together to open the “Capture Options” dialog.
+
+# The “Main” Toolbar
+The main toolbar provides quick access to frequently used items from the menu. This toolbar cannot be customized by the user, but it can be hidden using the View menu if the space on the screen is needed to show more packet data.
+
+Items in the toolbar will be enabled or disabled (greyed out) similar to their corresponding menu items. For example, the image below shows the main window toolbar after a file has been opened. Various file-related buttons are enabled, but the stop capture button is disabled because a capture is not in progress.
+
+ The “Main” toolbar
+<img width="1026" height="48" alt="image" src="https://github.com/user-attachments/assets/df66af9b-bf8b-40e9-9c9f-affc90b38602" />
+
+# | Icon | Toolbar Item | Menu Item | Description |
+|---|------|-------------|-----------|-------------|
+| 1 | capture start | Start | Capture → Start | Starts capturing packets with the same options as the last capture or the default options if none were set. |
+| 2 | capture stop | Stop | Capture → Stop | Stops the currently running capture. |
+| 3 | capture restart | Restart | Capture → Restart | Restarts the current capture session. |
+| 4 | capture options | Options… | Capture → Options… | Opens the "Capture Options" dialog box. |
+| 5 | document open | Open… | File → Open… | Opens the file open dialog box to load a capture file. |
+| 6 | capture file save | Save As… | File → Save As… | Saves the current capture file. Shows "Save" icon if a temporary capture is open. |
+| 7 | capture file close | Close | File → Close | Closes the current capture. Prompts to save if unsaved. |
+| 8 | capture file reload | Reload | View → Reload | Reloads the current capture file. |
+| 9 | edit find | Find Packet… | Edit → Find Packet… | Find a packet based on different criteria. |
+| 10 | go previous | Go Back | Go → Go Back | Jump back in packet history. Hold **Alt** (Option on macOS) to go back in selection history. |
+| 11 | go next | Go Forward | Go → Go Forward | Jump forward in packet history. Hold **Alt** (Option on macOS) to go forward in selection history. |
+| 12 | go jump | Go to Packet… | Go → Go to Packet… | Go to a specific packet. |
+| 13 | go first | Go To First Packet | Go → First Packet | Jump to the first packet of the capture file. |
+| 14 | go last | Go To Last Packet | Go → Last Packet | Jump to the last packet of the capture file. |
+| 15 | stay last | Auto Scroll in Live Capture | Go → Auto Scroll in Live Capture | Auto scroll packet list during a live capture (toggle on/off). |
+| 16 | colorize packets | Colorize | View → Colorize Packet List | Colorize the packet list (toggle on/off). |
+| 17 | aggregation | Aggregate Packets | View → Aggregate Packets | Activates Aggregation View, displaying frames grouped by selected field values. |
+| 18 | zoom in | Zoom In | View → Zoom In | Increase the font size of packet data. |
+| 19 | zoom out | Zoom Out | View → Zoom Out | Decrease the font size of packet data. |
+| 20 | zoom original | Normal Size | View → Normal Size | Reset zoom level to 100%. |
+| 21 | resize columns | Resize Columns | View → Resize Columns | Resize columns so content fits. |
+| 22 | reset layout 2 | Reset Layout | View → Reset Layout | Reset layout to default size. |   
+
+
