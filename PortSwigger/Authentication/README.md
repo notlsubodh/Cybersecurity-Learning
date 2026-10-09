@@ -62,4 +62,15 @@ This lab is subtly vulnerable to username enumeration and password brute-force a
 • Candidate usernames 
 •  candidate passwords
 So basically similar to previous lab but here just in setting in grep extract add the error message that is displayed i.e invalid username or password. so in the correct name there won't be . at the end and you got the name and for password you will have a different status code for here 302.
+3. Lab: Username enumeration via response timing
+This lab is vulnerable to username enumeration using its response times. To solve the lab, enumerate a valid username, brute-force this user's password, then access their account page.  
+Given credentials: wiener:peter, candidate usernames/passwords
+Things to know:
+• X-Forwarded-For(XFF): is a de-facto standard http request header used to identify the originating IP address of a client connecting to a web server through an intermediary, such as a proxy server or load balancer.Without this header, the destination server would only see the IP address of the last proxy in the chain, effectively anonymizing the original user.
+The header format is a comma-separated list of ip addresses, where the leftmost address is the original client and subsequent addresses represent each proxy the request traversed. For example, X-Forward-For: client, proxy1, proxy2. Each proxy in the chain appends the ip address of the previous hop to the header before forwarding the request.
+• Pitchfork attack: The Pitchfork attack in Burp Suite Intruder is a mode that uses multiple payload sets (one for each marked position) to inject payloads simultaneously into a request.
 
+☑ To solve this lab
+As it blocked ip address after frequently trying so add X-forwarded-For and send as it turned out you can send couple move with even an improper ip in X-Forwarded-For like random number like 1,2.
+→ So you see the difference btn the req time of normal username and password and where password is absurd that doesn't belong like lionlionlionlionlion. → Here why we did this is bcz if the username is valid that it will take time to process and if not it will not so the request form repeater is send to Intruder.
+→ Select pitchford attack and add $$ in X-Forwarded-For and username and make sure both digit should match like if 101 username then 101 number for X-Forward-For. Then wit and see the longest response time thats the valid name and same do for password.
